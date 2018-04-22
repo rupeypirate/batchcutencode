@@ -23,7 +23,7 @@ import atexit
 cutdir="/transcode/cut"
 encodedir="/transcode/encode"
 completedir="/transcode/complete"
-filefilter= ['*.mp4', '*.MP4', '*.mkv', '*.MKV', '*.avi', '*.AVI"']
+filefilter= ['*.mp4', '*.MP4', '*.mkv', '*.MKV', '*.avi', '*.AVI"', '*.ts"', '*.TS"']
 
 ffmpeg = "/usr/bin/ffmpeg"
 ffprobe = "/usr/bin/ffprobe"
@@ -38,10 +38,10 @@ def debugprint( key, value ):
 pid = str(os.getpid())
 pidfile = "/tmp/batchcutencode.pid"
 
+print ('Program starting, Creating lock file')
 if os.path.isfile(pidfile):
     print (pidfile + " already exists, exiting")
     sys.exit()
-
 f= open(pidfile, 'w')
 f.write(pid)
 f.close()
