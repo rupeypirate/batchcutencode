@@ -1,13 +1,13 @@
 # Dockerfile for batchcutencode
 
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 WORKDIR /app
 
-
-
 ADD src/ /app/
 RUN chmod +x /app/launch.sh
+RUN chmod +x /app/cutnotify.sh
+RUN chmod +x /app/encodenotify.sh
 
 RUN apt-get update && apt-get install -y ffmpeg handbrake-cli python3 inotify-tools
 
