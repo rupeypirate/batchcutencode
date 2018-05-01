@@ -2,6 +2,8 @@
 
 # requires inotify-tools be installed
 
+echo "encodenotify.sh starting"
+
 #inotifywait -m -e close_write "/home/eric/test/" | while read FILE
 inotifywait -m -e close_write "/transcode/encode/" | while read FILE
 do
@@ -11,3 +13,4 @@ do
     python3 encode.py $FILE
 done
 
+echo "encodenotify.sh ending"

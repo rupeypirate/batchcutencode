@@ -15,5 +15,5 @@ RUN apt-get update && apt-get install -y ffmpeg handbrake-cli python3 inotify-to
 #RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 # Run app.py when the container launches 
-ENTRYPOINT ["/bin/bash", "-c", "/app/launch.sh"]
-#CMD ["/app/launch.sh"]
+#ENTRYPOINT ["/bin/bash", "-c", "/app/launch.sh"]
+CMD ["bash", "/app/launch.sh"]

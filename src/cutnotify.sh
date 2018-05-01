@@ -2,6 +2,8 @@
 
 # requires inotify-tools be installed
 
+echo "cutnotify.sh starting"
+
 #inotifywait -m -e close_write "/home/eric/test/" | while read FILE
 inotifywait -mr -e close_write "/transcode/cut/" | while read FILE
 do
@@ -11,3 +13,4 @@ do
     python3 cut.py $FILE 5 5
 done
 
+echo "cutnotify.sh exiting"
