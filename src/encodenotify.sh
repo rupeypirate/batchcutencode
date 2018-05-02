@@ -2,15 +2,14 @@
 
 # requires inotify-tools be installed
 
-echo "encodenotify.sh starting"
+echo "ENCODENOTIFY: starting"
 
-#inotifywait -m -e close_write "/home/eric/test/" | while read FILE
-inotifywait -m -e close_write "/transcode/encode/" | while read FILE
+inotifywait -m -e close_write "/transcode/encode/" | while read cPATH cPARMS cFILE
 do
-    echo "inotify: $FILE"
+    echo "ENCODENOTIFY: inotify: $cPATH  $cFILE"
     # inotify has the following format in file creating 3 arguments for cut.py instad of 1
     # <path to file> triggers <filename.ext>
-    python3 encode.py $FILE
+    python3 encode.py "$cPATH" "$cPARMS" "$cFILE" < /dev/null
 done
 
-echo "encodenotify.sh ending"
+echo "ENCODENOTIFY: ending"
