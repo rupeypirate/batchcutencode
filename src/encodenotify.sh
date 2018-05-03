@@ -4,6 +4,14 @@
 
 echo "ENCODENOTIFY: starting"
 
+re='^[0-9]+$'
+if ! [[ $SECONDS_FRONT =~ $re ]] ; then
+	SECONDS_FRONT=5
+fi
+if ! [[ $SECONDS_END =~ $re ]] ; then
+        SECONDS_END=5
+fi
+
 inotifywait -m -e close_write "/transcode/encode/" | while read cPATH cPARMS cFILE
 do
     echo "ENCODENOTIFY: inotify: $cPATH  $cFILE"

@@ -8,9 +8,9 @@ ADD src/ /app/
 RUN chmod +x /app/launch.sh
 RUN chmod +x /app/cutnotify.sh
 RUN chmod +x /app/encodenotify.sh
-RUN mkdir /transcode/cut
-RUN mkdir /transcode/encode
-RUN mkdir /transcode/complete
+RUN mkdir -p /transcode/cut
+RUN mkdir -p /transcode/encode
+RUN mkdir -p /transcode/complete
 
 RUN apt-get update && apt-get install -y ffmpeg handbrake-cli python3 inotify-tools
 
