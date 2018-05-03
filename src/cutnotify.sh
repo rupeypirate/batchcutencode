@@ -9,7 +9,7 @@ do
     echo "CUTNOTIFY: inotify: close_write: $cPATH  $cFILE"
     # inotify has the following format in file creating 3 arguments for cut.py instad of 1
     # <path to file> triggers <filename.ext> 
-    python3 cut.py "$cPATH" "$cOPTIONS" "$cFILE" 5 5 < /dev/null
+    python3 cut.py "$cPATH" "$cOPTIONS" "$cFILE" ${SECONDS_FRONT} ${SECONDS_END} < /dev/null
 done
 
 echo "CUTNOTIFY: exiting"
