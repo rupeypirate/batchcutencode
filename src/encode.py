@@ -65,7 +65,8 @@ print("ENCODE: completefilename: " + str(completefilename))
 
 # Use HandbrakeCLI to encode files in the encode directory
 #$HANDBRAKECLI -i "$file" -o "$completedir/$filename" --preset="Normal"
-avcommand= handbrake + " -i \"" + ff + "\" -o \"" + completefilename + "\" --preset=\"Normal\""
+#avcommand= handbrake + " -i \"" + ff + "\" -o \"" + completefilename + "\" --preset=\"Normal\""
+avcommand= handbrake + " -i \"" + ff + "\" -o \"" + completefilename + "\" --preset=\"HQ 1080p30 Surround\""
 print("ENCODE:handbrake command: " + avcommand)
 
 avprocess = subprocess.Popen(avcommand, universal_newlines=True, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
