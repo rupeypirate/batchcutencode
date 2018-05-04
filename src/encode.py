@@ -63,7 +63,7 @@ if not encodefilename.lower().endswith(filefilter):
 completefilename = (completedir + "/" + encodefilename).rsplit(".", 1)[0] + '.mp4'
 print("ENCODE: completefilename: " + str(completefilename))
 
-if encodeprofile = "" :
+if encodeprofile == "" :
 	encodeprofile = "Fast 1080p30"
 
 print("ENCODE: encodeprofile: " + str(encodeprofile))
