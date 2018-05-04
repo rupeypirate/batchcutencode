@@ -4,20 +4,17 @@
 
 echo "ENCODENOTIFY: starting"
 
-re='^[0-9]+$'
-if ! [[ $SECONDS_FRONT =~ $re ]] ; then
-	SECONDS_FRONT=5
+if ! [[ $ENCODE_PROFILE  ]] ; then
+        ENCODE_PROFILE="Fast 1080p30"
 fi
-if ! [[ $SECONDS_END =~ $re ]] ; then
-        SECONDS_END=5
-fi
+
 
 inotifywait -m -e close_write "/transcode/encode/" | while read cPATH cPARMS cFILE
 do
-    echo "ENCODENOTIFY: inotify: $cPATH  $cFILE"
+    echo "ENCODENOTIFY: inotify: $cPATH  $cFILE $ENCODE_PROFILE"
     # inotify has the following format in file creating 3 arguments for cut.py instad of 1
     # <path to file> triggers <filename.ext>
-    python3 encode.py "$cPATH" "$cPARMS" "$cFILE" < /dev/null
+    python3 encode.py "$cPATH" "$cPARMS" "$cFILE" "$ENCODE_PROFILE"  < /dev/null
 done
 
 echo "ENCODENOTIFY: ending"

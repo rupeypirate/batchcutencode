@@ -45,6 +45,7 @@ if len(sys.argv) != 4:
 encodefiledirectory = sys.argv[1]
 encodefiletrigger = sys.argv[2]
 encodefilename = sys.argv[3]
+encodeprofile = sys.argv[4]
 
 # Due to inotify passing this in, we can process sub directories also.    
 ff=os.path.join(encodefiledirectory, encodefilename)
@@ -58,15 +59,19 @@ if not encodefilename.lower().endswith(filefilter):
 	print ("ENCODE: file is not correct type, exiting: " + encodefilename)
 	sys.exit(1)
 
-
 #HandbrakeCLI will encode to mp4, so need to set the completedir target with filename have an mp4 extension	
 completefilename = (completedir + "/" + encodefilename).rsplit(".", 1)[0] + '.mp4'
 print("ENCODE: completefilename: " + str(completefilename))
 
+if encodeprofile = "" :
+	encodeprofile = "Fast 1080p30"
+
+print("ENCODE: encodeprofile: " + str(encodeprofile))
+
 # Use HandbrakeCLI to encode files in the encode directory
 #$HANDBRAKECLI -i "$file" -o "$completedir/$filename" --preset="Normal"
 #avcommand= handbrake + " -i \"" + ff + "\" -o \"" + completefilename + "\" --preset=\"Normal\""
-avcommand= handbrake + " -i \"" + ff + "\" -o \"" + completefilename + "\" --preset=\"HQ 1080p30 Surround\""
+avcommand= handbrake + " -i \"" + ff + "\" -o \"" + completefilename + "\" --preset=\"" + encodeprofile + "\""
 print("ENCODE:handbrake command: " + avcommand)
 
 avprocess = subprocess.Popen(avcommand, universal_newlines=True, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
