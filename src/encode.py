@@ -29,9 +29,9 @@ print ("ENCODE: Initiating script: " + str(sys.argv[0]))
 print ("ENCODE: Number of arguments: " + str(len(sys.argv)))
 print ("ENCODE: The arguments are: " + str(sys.argv))
 
-if len(sys.argv) != 4:
+if len(sys.argv) != 5:
 	print ("ENCODE: " + sys.argv[0] + " has wrong number of arguments, exiting")
-	print ("ENCODE: There should be 4 arguements")
+	print ("ENCODE: There should be 5 arguements")
 	print ("ENCODE: " + str(sys.argv))
 	sys.exit(1)
 
