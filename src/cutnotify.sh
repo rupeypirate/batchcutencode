@@ -11,6 +11,8 @@ do
 	if [[ -f /transcode/defaultsettings.txt ]]; then
 			echo "defaultsettings.txt file exists.  Using Override."
 			source /transcode/defaultsettings.txt
+			echo "SECONDS_FRONT = $SECONDS_FRONT"
+			echo "SECONDS_END = $SECONDS_END"
 	fi
 	
 	re='^[0-9]+$'
