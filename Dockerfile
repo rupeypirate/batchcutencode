@@ -5,13 +5,13 @@ FROM ubuntu:18.04
 WORKDIR /app
 
 ADD src/ /app/
-ADD defaultsettings.txt /transcode/
 RUN chmod +x /app/launch.sh
 RUN chmod +x /app/cutnotify.sh
 RUN chmod +x /app/encodenotify.sh
-RUN mkdir -p /transcode/cut
-RUN mkdir -p /transcode/encode
-RUN mkdir -p /transcode/complete
+RUN mkdir -p /transcode
+#RUN mkdir -p /transcode/cut
+#RUN mkdir -p /transcode/encode
+#RUN mkdir -p /transcode/complete
 
 RUN apt-get update && apt-get install -y ffmpeg handbrake-cli python3 inotify-tools
 
