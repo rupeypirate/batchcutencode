@@ -1,13 +1,10 @@
 # Using this overides the settings in the UNRAID Docker Settings GUI.
 # These settings are sourced befor each file is processed and can therfor be changed on the fly.
-
 # Defines how many seconds to cut off of the front and back of the video.  Default for both is 5 seconds
 #SECONDS_FRONT=5
 #SECONDS_END=5
-
 # Defines the handbrake encoding file.  Choose one.  Default is "Fast 1080p30"
 #ENCODE_PROFILE="Fast 1080p30"
-
 #ENCODE_PROFILE="Very Fast 1080p30"
 #ENCODE_PROFILE="HQ 1080p30 Surround"
 #ENCODE_PROFILE="Super HQ 1080p30 Surround"

@@ -4,19 +4,19 @@
 
 echo "CUTNOTIFY: starting"
 
-
-
 inotifywait -mr -e close_write "/transcode/cut/" | while read cPATH cOPTIONS cFILE
 do
 	if [[ -f /transcode/defaultsettings.txt ]]; then
 			echo "defaultsettings.txt file exists.  Using Override."
 			source /transcode/defaultsettings.txt
-			echo "SECONDS_FRONT (inside if) = $SECONDS_FRONT"
-			echo "SECONDS_END (inside if)= $SECONDS_END"
 	fi
-				
-	echo "SECONDS_FRONT(outside if) = $SECONDS_FRONT"
-	echo "SECONDS_END (outside if) = $SECONDS_END"
+	
+	# Remove Windows special characters
+	SECONDS_FRONT=`echo "$SECONDS_FRONT" | tr -cd "[:print:]\n"`
+	SECONDS_END=`echo "$SECONDS_END" | tr -cd "[:print:]\n"`
+	
+	echo "SECONDS_FRONT = $SECONDS_FRONT"
+	echo "SECONDS_END = $SECONDS_END"
 	
 	re='^[0-9]+$'
 	if ! [[ $SECONDS_FRONT =~ $re ]] ; then
