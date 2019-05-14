@@ -4,10 +4,15 @@
 
 echo "CUTNOTIFY: starting"
 
-	if [[ -f transcode/defaultsettings.txt ]]; then
-			echo "defaultsettings.txt file exists"
+
+
+inotifywait -mr -e close_write "/transcode/cut/" | while read cPATH cOPTIONS cFILE
+do
+	if [[ -f /transcode/batchcutencode/defaultsettings.txt ]]; then
+			echo "defaultsettings.txt file exists.  Using Override."
+			source /transcode/batchcutencode/defaultsettings.txt
 	fi
-	source ./settings
+	
 	re='^[0-9]+$'
 	if ! [[ $SECONDS_FRONT =~ $re ]] ; then
 			echo "SECONDS_FRONT did not exist, using default of 5 SECONDS"
@@ -17,9 +22,7 @@ echo "CUTNOTIFY: starting"
 		echo "SECONDS_END did not exist, using default of 5 SECONDS"
 			SECONDS_END=5
 	fi
-
-inotifywait -mr -e close_write "/transcode/cut/" | while read cPATH cOPTIONS cFILE
-do
+	
     echo "CUTNOTIFY: inotify: close_write: $cPATH  $cFILE ${SECONDS_FRONT} ${SECONDS_END}"
     # inotify has the following format in file creating 3 arguments for cut.py instad of 1
     # <path to file> triggers <filename.ext> 

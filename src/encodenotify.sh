@@ -7,10 +7,11 @@ echo "ENCODENOTIFY: starting"
 
 inotifywait -m -e close_write "/transcode/encode/" | while read cPATH cPARMS cFILE
 do
-	if [[ -f transcode/defaultsettings.txt ]]; then
-			echo "defaultsettings.txt file exists"
+	if [[ -f /transcode/batchcutencode/defaultsettings.txt ]]; then
+			echo "defaultsettings.txt file exists.  Using Override."
+			source /transcode/batchcutencode/defaultsettings.txt
 	fi
-	source ./settings
+	
 	if ! [[ $ENCODE_PROFILE  ]] ; then
 			echo "ENCODE_PROFILE did not exist, using default of Fast 1080p30"
 			ENCODE_PROFILE="Fast 1080p30"
