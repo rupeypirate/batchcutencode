@@ -5,6 +5,7 @@ FROM ubuntu:18.04
 WORKDIR /app
 
 ADD src/ /app/
+ADD defaultsettings.txt /transcode/
 RUN chmod +x /app/launch.sh
 RUN chmod +x /app/cutnotify.sh
 RUN chmod +x /app/encodenotify.sh
