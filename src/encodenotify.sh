@@ -7,9 +7,9 @@ echo "ENCODENOTIFY: starting"
 
 inotifywait -m -e close_write "/transcode/encode/" | while read cPATH cPARMS cFILE
 do
-	if [[ -f /transcode/batchcutencode/defaultsettings.txt ]]; then
+	if [[ -f /transcode/defaultsettings.txt ]]; then
 			echo "defaultsettings.txt file exists.  Using Override."
-			source /transcode/batchcutencode/defaultsettings.txt
+			source /transcode/defaultsettings.txt
 	fi
 	
 	if ! [[ $ENCODE_PROFILE  ]] ; then

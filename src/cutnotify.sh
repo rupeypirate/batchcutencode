@@ -8,9 +8,9 @@ echo "CUTNOTIFY: starting"
 
 inotifywait -mr -e close_write "/transcode/cut/" | while read cPATH cOPTIONS cFILE
 do
-	if [[ -f /transcode/batchcutencode/defaultsettings.txt ]]; then
+	if [[ -f /transcode/defaultsettings.txt ]]; then
 			echo "defaultsettings.txt file exists.  Using Override."
-			source /transcode/batchcutencode/defaultsettings.txt
+			source /transcode/defaultsettings.txt
 	fi
 	
 	re='^[0-9]+$'
