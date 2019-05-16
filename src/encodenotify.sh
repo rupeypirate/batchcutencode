@@ -15,7 +15,9 @@ do
 	ENCODE_PROFILE=`echo "$ENCODE_PROFILE" | tr -cd "[:print:]\n"`
 	CUT_ONLY=`echo "$CUT_ONLY" | tr -cd "[:print:]\n"`
 	
-	if [[ $CUT_ONLY =="YES"]] ; then
+	shopt -s nocasematch
+	
+	if [[ $CUT_ONLY == "YES" ]] ; then
 		echo "CUT_ONLY enabled, skipping encoding"
 	else
 		if ! [[ $ENCODE_PROFILE  ]] ; then
